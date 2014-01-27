@@ -8,11 +8,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.RectangleCalculation;
 
 /**
  *
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AreaController", urlPatterns = {"/AreaController"})
 public class AreaController extends HttpServlet {
+    private static final String RESULT_PAGE = "results.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +38,15 @@ public class AreaController extends HttpServlet {
 
             String h = request.getParameter("height");
             String w = request.getParameter("width");
-            RectangleCalculation rc = new RectangleCalculation;
+            double height = Double.parseDouble(h);
+            double width = Double.parseDouble(w);
+            RectangleCalculation rc = new RectangleCalculation();
+            double results = rc.getArea(height, width);
+            
+            RequestDispatcher view =
+                request.getRequestDispatcher(RESULT_PAGE);
+        view.forward(request, response);
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

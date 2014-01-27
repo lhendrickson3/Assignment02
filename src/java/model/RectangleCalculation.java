@@ -11,5 +11,10 @@ package model;
  * @author User
  */
 public class RectangleCalculation {
+    private double area;
     
+    public double getArea(double height, double width){
+        area = height * width;
+        return area;
+    }
 }
