@@ -9,9 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Results</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Your area is</h1>
+        <%
+        //double area = (Double)
+                
+            out.print(request.getAttribute("results"));
+        }
+        %>
     </body>
 </html>

@@ -24,31 +24,6 @@ import model.RectangleCalculation;
 public class AreaController extends HttpServlet {
     private static final String RESULT_PAGE = "results.jsp";
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-            String h = request.getParameter("height");
-            String w = request.getParameter("width");
-            double height = Double.parseDouble(h);
-            double width = Double.parseDouble(w);
-            RectangleCalculation rc = new RectangleCalculation();
-            double results = rc.getArea(height, width);
-            
-            RequestDispatcher view =
-                request.getRequestDispatcher(RESULT_PAGE);
-        view.forward(request, response);
-            
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -61,7 +36,7 @@ public class AreaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
@@ -75,7 +50,25 @@ public class AreaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+ //       processRequest(request, response);
+        response.setContentType("text/html");
+//            double height = 0.00;
+//            double width = 0.00;
+            String h = request.getParameter("height");
+            String w = request.getParameter("width");
+            
+            double height = Double.parseDouble(h);
+            double width = Double.parseDouble(w);
+            RectangleCalculation rc = new RectangleCalculation();
+            double results = rc.getArea(height, width);
+            
+            request.setAttribute("results", results);
+            
+            RequestDispatcher view =
+                request.getRequestDispatcher(RESULT_PAGE);
+            view.forward(request, response);
+            
+            
     }
 
     /**
