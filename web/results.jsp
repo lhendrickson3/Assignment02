@@ -17,7 +17,7 @@
         //double area = (Double)
                 
             out.print(request.getAttribute("results"));
-        }
+        
         %>
     </body>
 </html>
