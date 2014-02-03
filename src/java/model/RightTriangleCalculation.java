@@ -16,7 +16,7 @@ public class RightTriangleCalculation {
     private double sideC;
     
     public double getSideC(double sideA, double sideB){
-       sideC = (sideA*sideA)*(sideB*sideB);
+       sideC = Math.sqrt(Math.pow(sideA,2) + Math.pow(sideB,2));
        return sideC;
     }
 }

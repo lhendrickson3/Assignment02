@@ -1,6 +1,6 @@
 <%-- 
-    Document   : results
-    Created on : Jan 27, 2014, 1:22:11 PM
+    Document   : resultsThree
+    Created on : Feb 2, 2014, 7:47:20 PM
     Author     : User
 --%>
 
@@ -13,12 +13,12 @@
     </head>
     <body>
         <h1>Results</h1>
-        <h2>Rectangle</h2>
+       
+        <h2>Pythagorean Theorem</h2>
         <%
-                
-            out.print("The area of your rectangle is " + request.getAttribute("results"));
-        
+            
+            out.print("The length of Side C is " + request.getAttribute("resultsThree"));
+                        
         %>
-        
     </body>
 </html>

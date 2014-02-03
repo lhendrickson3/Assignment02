@@ -8,23 +8,44 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CircleAreaCalcualtion;
-import model.RectangleCalculation;
-import model.RightTriangleCalculation;
 
 /**
  *
  * @author User
  */
-@WebServlet(name = "AreaController", urlPatterns = {"/AreaController"})
-public class AreaController extends HttpServlet {
-    private static final String RESULT_PAGE = "results.jsp";
+@WebServlet(name = "CircleAreaController", urlPatterns = {"/CircleAreaController"})
+public class CircleAreaController extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CircleAreaController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CircleAreaController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,7 +59,7 @@ public class AreaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -52,37 +73,7 @@ public class AreaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        response.setContentType("text/html");
-
-            String h = request.getParameter("height");
-            String w = request.getParameter("width");
-            String r = request.getParameter("radius");
-            String a = request.getParameter("sidea");
-            String b = request.getParameter("sideb");
-            
-            double height = Double.parseDouble(h);
-            double width = Double.parseDouble(w);
-            double radius = Double.parseDouble(r);
-            double sideA = Double.parseDouble(a);
-            double sideB = Double.parseDouble(b);
-            
-            RectangleCalculation rc = new RectangleCalculation();
-            double results = rc.getArea(height, width);
-            CircleAreaCalcualtion ca = new CircleAreaCalcualtion();
-            double resultsTwo = ca.getArea(radius);
-            RightTriangleCalculation rt = new RightTriangleCalculation();
-            double resultsThree = rt.getSideC(sideA, sideB);
-            
-            request.setAttribute("results", results);
-            request.setAttribute("resultsTwo", resultsTwo);
-            request.setAttribute("resultsThree", resultsThree);
-            
-            RequestDispatcher view =
-                request.getRequestDispatcher(RESULT_PAGE);
-            view.forward(request, response);
-            
-            
+        processRequest(request, response);
     }
 
     /**
