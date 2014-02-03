@@ -12,11 +12,22 @@
         <title>Results</title>
     </head>
     <body>
-        <h1>Your area is</h1>
+        <h1>The area of your rectangle is</h1>
         <%
-        //double area = (Double)
                 
             out.print(request.getAttribute("results"));
+        
+        %>
+        <h1>The area of your circle is</h1>
+        <%
+                
+            out.print(request.getAttribute("\nresultsTwo"));
+        
+        %>
+        <h1>Side C of your triangle is</h1>
+        <%
+ 
+            out.print(request.getAttribute("\nresultsThree"));
         
         %>
     </body>

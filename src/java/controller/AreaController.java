@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CircleAreaCalcualtion;
 import model.RectangleCalculation;
+import model.RightTriangleCalculation;
 
 /**
  *
@@ -56,13 +58,26 @@ public class AreaController extends HttpServlet {
 //            double width = 0.00;
             String h = request.getParameter("height");
             String w = request.getParameter("width");
+            String r = request.getParameter("radius");
+            String a = request.getParameter("sidea");
+            String b = request.getParameter("sideb");
             
             double height = Double.parseDouble(h);
             double width = Double.parseDouble(w);
+            double radius = Double.parseDouble(r);
+            double sideA = Double.parseDouble(a);
+            double sideB = Double.parseDouble(b);
+            
             RectangleCalculation rc = new RectangleCalculation();
             double results = rc.getArea(height, width);
+            CircleAreaCalcualtion ca = new CircleAreaCalcualtion();
+            double resultsTwo = ca.getArea(radius);
+            RightTriangleCalculation rt = new RightTriangleCalculation();
+            double resultsThree = rt.getSideC(sideA, sideB);
             
             request.setAttribute("results", results);
+            request.setAttribute("resultsTwo", resultsTwo);
+            request.setAttribute("resultsThree", resultsThree);
             
             RequestDispatcher view =
                 request.getRequestDispatcher(RESULT_PAGE);
